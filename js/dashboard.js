@@ -233,7 +233,11 @@ angular.module('dashboard', ['btford.socket-io', 'reelyactive.beaver',
 
   function updateLocation(type, data) {
     if(data.tiraid.identifier.value === CONE_ID) {
-      if(data.tiraid.radioDecodings[0].identifier.value === BOOTH_ID) {
+      if(type === 'disappearance') {
+        $scope.coneAtBooth = false;
+        $scope.coneAtRemote = false;
+      }
+      else if(data.tiraid.radioDecodings[0].identifier.value === BOOTH_ID) {
         $scope.coneAtBooth = true;
         $scope.coneAtRemote = false;
       }
